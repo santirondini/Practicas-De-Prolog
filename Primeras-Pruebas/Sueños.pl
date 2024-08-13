@@ -88,13 +88,13 @@ noHayEnfermos(Personaje):-
     not(personaje(BuckUp,si)).
 
 esBackUp(Personaje,BuckUp):-
-    esAmigo(Persona,BuckUp).
+    esAmigo(Personaje,BuckUp).
 
 esBackUp(Personaje,BuckUp):-
     esAmigo(BuckUp,Personaje).
 
 esBackUp(Personaje,BuckUp):-
-    esAmigo(Persona,Otro),
+    esAmigo(Personaje,Otro),
     esAmigo(Otro,BuckUp).
 
 

@@ -1,22 +1,32 @@
 
+% cantante( Nombre , Canción , Minutos ).
+
 cantante(megurineluka,nightFever,4).
 cantante(megurineluka,foreverYoung,5).
 
 cantante(hatsumeMiku,tellYourWorld,4).
 
 cantante(gumi,foreverYoung,4).
-cantante(gumi,tellYourWorld,8).
+cantante(gumi,tellYourWorld,20).
 
 cantante(seeU,novemberRain,6).
 cantante(seeU,nightFever,5).
 
-esNovedoso(Vocaloid):-
+tieneMasDeDosCanciones(Vocaloid):-
     cantante(Vocaloid,Cancion1,_),
     cantante(Vocaloid,Cancion2,_),
-    Cancion1 \= Cancion2, 
+    Cancion1 \= Cancion2.
+
+% findall( El tipo de dato, Condiciones, Lista Filtrada ). 
+
+cancionesMasDe15(Vocaloid):-
     findall(Minutos,cantante(Vocaloid,_,Minutos),Tiempos),
     sum_list(Tiempos, Total),
     Total > 15.
+
+esNovedoso(Vocaloid):-
+    tieneMasDeDosCanciones(Vocaloid),
+    cancionesMasDe15(Vocaloid).
 
 totalDeCancionesMayorA(Vocaloid,ListaDeCanciones,MayorA):-
     cantante(Vocaloid,_,_),
@@ -28,7 +38,6 @@ sumaTotalDeCanciones(Vocaloid,TiempoTotal):-
     cantante(Vocaloid,_,_),
     findall(Minutos,cantante(Vocaloid,_,Minutos),ListaDeTiempos),
     sum_list(ListaDeTiempos,TiempoTotal). 
-
 
 concierto(mikuExpo,estadosUnidos,2000,gigante(2,6)).
 concierto(magicalMirai,japon,3000,gigante(3,10)).

@@ -27,8 +27,8 @@ amigo(marvin,jules).
 realizaActividadPeligrosa(Personaje):-
     personaje(Personaje,mafioso(maton)).
 realizaActividadPeligrosa(Personaje):-
-    personaje(Personaje,ladron(lista)),
-    member(licorerias,lista).
+    personaje(Personaje,ladron(Lista)),
+    member(licorerias,Lista).
 
 tieneEmepleadosPeligrosos(Personaje):-
     trabajaPara(Personaje,Empleado),
