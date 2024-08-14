@@ -128,19 +128,23 @@ hayAlgunaBandaDeModa(Festival):-
 % tipos de entrada: campo, plateaNumerada(numero de fila), plateaGeneral(zona).
 % banda(nombre, año, nacionalidad, popularidad).
 
+entradaRazonable(Festival,Entrada):-
+    festival(Festival,_,_,_),
+    condicionesRazonable(Festival,Entrada).
+
 
 precio(Festival,plateaNumerada(NumeroDeFila),Precio):-
     festival(Festival,_,_,PrecioBase),
     entradasVendidas(Festival,plateaNumerada(NumeroDeFila),_),
     Precio is (PrecioBase + 200) / NumeroDeFila.
 
-entradaRazonable(Festival,plateaNumerada(NumeroDeFila)):-
+condicionesRazonable(Festival,plateaNumerada(NumeroDeFila)):-
     festival(Festival,_,_,PrecioBase),
     not(hayAlgunaBandaDeModa(Festival)),
     precio(Festival,plateaNumerada(NumeroDeFila),Precio),
     Precio < 750.
 
-entradaRazonable(Festival,plateaNumerada(NumeroDeFila)):-
+condicionesRazonable(Festival,plateaNumerada(NumeroDeFila)):-
     festival(Festival,lugar(_,Capacidad),_,PrecioBase),
     popularidadTotal(Festival,PopoularidadTotal),
     precio(Festival,plateaNumerada(NumeroDeFila),Precio),
@@ -153,7 +157,7 @@ precio(Festival,plateaGeneral(Zona),Precio):-
     plusZona(_,Zona,Plus),
     Precio is ((PrecioBase + 200) / NumeroDeFila). 
 
-entradaRazonable(Festival,plateaGeneral(Zona)):-
+condicionesRazonable(Festival,plateaGeneral(Zona)):-
     festival(Festival,_,_,PrecioBase),
     plusZona(_,Zona,Plus),
     precio(Festival,plateaGeneral(Zona),Precio),
