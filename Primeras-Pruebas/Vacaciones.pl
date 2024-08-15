@@ -49,8 +49,8 @@ cumpleCondiciones(Atraccion):-
 
 cumpleCondiciones(Atraccion):-
     atraccion(_,excursion(Atraccion,_)),
-    length(Atraccion,CantidadDeLetras),
-    CantidadDeLetras > 7.
+    atom_length(Atraccion, Length),
+    Length > 7.
 
 esCopada(parqueNacional(_)).
 
