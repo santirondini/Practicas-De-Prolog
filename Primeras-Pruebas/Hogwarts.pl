@@ -1,5 +1,4 @@
 
-
 % mago (Nombre,Sangre,Caracteristicas)
 
 mago(harry,mestiza,[corajudo,amistoso,orgulloso,inteligente]).
